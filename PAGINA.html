@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MG El Mate | Tradición y Calidad en Moreno</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES DE MARCA --- */
+        :root {
+            --verde-suculenta: #8fb489; 
+            --marron-cuero: #5d4037;    
+            --crema-fondo: #fcfaf2;     
+            --crema-oscuro: #f2ede0;    
+            --marron-texto: #3e2723;  
+            --dorado-virola: #b59a5d;  
+        }
+
+        /* --- ESTILOS GENERALES --- */
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Raleway', sans-serif; margin: 0; background-color: var(--crema-fondo); color: var(--marron-texto); overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+        /* --- BARRA DE NAVEGACIÓN --- */
+        nav {
+            background-color: var(--verde-suculenta);
+            position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 50px; border-bottom: 2px solid var(--dorado-virola);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .nav-logo { display: flex; align-items: center; }
+        .nav-logo img { height: 50px; width: 50px; border-radius: 50%; border: 2px solid var(--marron-cuero); object-fit: cover; }
+        .nav-logo span { color: var(--marron-cuero); margin-left: 12px; font-weight: bold; letter-spacing: 1.5px; font-size: 0.9rem; }
+
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; }
+        nav a { color: var(--marron-cuero); text-decoration: none; font-weight: 700; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* --- BANNER SPLIT --- */
+        .split-banner { display: flex; height: 80vh; background-color: var(--marron-cuero); overflow: hidden; border-bottom: 5px solid var(--dorado-virola); }
+        .split-video { flex: 1.2; position: relative; background: #000; }
+        .split-video video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%; }
+        .split-text { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 4rem; color: var(--crema-fondo); }
+        .split-text h2 { font-size: 3.2rem; margin-bottom: 1rem; line-height: 1.1; }
+        .btn-cta { background: var(--verde-suculenta); color: var(--marron-cuero); padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; margin-top: 1rem; display: inline-block; width: fit-content; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .btn-cta:hover { background: var(--crema-fondo); transform: translateY(-3px); }
+
+        /* --- BARRA CATEGORÍAS --- */
+        .categorias-bar { display: flex; justify-content: center; gap: 15px; padding: 25px 10px; background-color: var(--crema-fondo); flex-wrap: wrap; border-bottom: 1px solid var(--crema-oscuro); }
+        .cat-btn { text-decoration: none; background-color: white; color: var(--marron-cuero); padding: 10px 20px; border-radius: 50px; font-weight: 700; font-size: 0.8rem; box-shadow: 0 2px 5px rgba(0,0,0,0.03); border: 1px solid var(--crema-oscuro); transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .cat-btn:hover { background-color: var(--verde-suculenta); border-color: var(--verde-suculenta); transform: translateY(-2px); }
+
+        /* --- CONTENEDOR DE PRODUCTOS --- */
+        .productos-container { padding: 3rem 0; max-width: 100%; overflow: hidden; }
+        .section-title { text-align: left; font-size: 2rem; color: var(--marron-cuero); margin: 0 0 20px 50px; position: relative; padding-bottom: 10px; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 50px; height: 2px; background-color: var(--dorado-virola); }
+
+        .productos-carrusel {
+            display: flex; gap: 20px; padding: 10px 50px 30px 50px;
+            overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+        }
+        .productos-carrusel::-webkit-scrollbar { display: none; }
+
+        .mate-card {
+            flex: 0 0 280px; scroll-snap-align: start; background: #fff; border-radius: 12px;
+            padding: 1.2rem; text-align: center; border: 1px solid var(--crema-oscuro);
+            transition: 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .mate-card:hover { transform: translateY(-5px); border-color: var(--verde-suculenta); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+
+        .img-container { width: 100%; height: 220px; overflow: hidden; border-radius: 8px; margin-bottom: 12px; background: var(--crema-oscuro); }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
+
+        .mate-card h3 { font-size: 1.1rem; margin: 0 0 8px 0; color: var(--marron-texto); height: 2.4em; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .precio { font-weight: bold; font-size: 1.3rem; color: var(--marron-cuero); display: block; margin-bottom: 12px; }
+        .btn-whatsapp { background: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; font-size: 0.85rem; transition: 0.3s; }
+
+        .scroll-hint { text-align: right; font-size: 0.75rem; color: var(--dorado-virola); margin-right: 50px; margin-top: -15px; margin-bottom: 20px; font-style: italic; opacity: 0.8; }
+
+       /* --- SECCIÓN CUIDADOS INTERACTIVA (FLIP CARDS) --- */
+        .cuidados-seccion { padding: 5rem 50px; background-color: var(--crema-fondo); border-top: 1px solid var(--crema-oscuro); }
+        .cuidados-grid { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; max-width: 1100px; margin: 50px auto 0 auto; }
+        
+        .flip-card { background-color: transparent; width: 300px; height: 350px; perspective: 1000px; cursor: pointer; flex: 1; min-width: 280px; max-width: 350px; }
+        
+        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 15px; }
+        
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; box-sizing: border-box; }
+        
+        .flip-card-front { background-color: #fff; border: 2px solid var(--crema-oscuro); color: var(--marron-cuero); }
+        /* Espacio reservado para una futura foto tuya ilustrando el paso */
+        .foto-paso { width: 120px; height: 120px; background-color: var(--crema-oscuro); border-radius: 50%; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; border: 3px solid var(--dorado-virola); }
+        
+        .flip-card-front h3 { font-size: 1.5rem; margin: 10px 0 0 0; }
+        .flip-card-front span { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--verde-suculenta); font-weight: bold; position: absolute; top: 15px; left: 25px; opacity: 0.3; }
+        
+        .flip-card-back { background-color: var(--verde-suculenta); color: var(--marron-cuero); transform: rotateY(180deg); border: 2px solid var(--verde-suculenta); }
+        .flip-card-back h3 { font-size: 1.5rem; margin-top: 0; margin-bottom: 15px; color: var(--crema-fondo); }
+        .flip-card-back p { font-size: 1.05rem; line-height: 1.6; font-weight: 500; color: var(--crema-fondo); }
+        
+        /* --- NUESTRA HISTORIA --- */
+        .nosotros-seccion {
+            padding: 5rem 50px; background-color: var(--crema-oscuro);
+            display: flex; justify-content: flex-end;
+        }
+        .historia-recuadro {
+            max-width: 500px; background-color: var(--crema-fondo); padding: 3rem;
+            border-radius: 15px; border: 1px solid var(--dorado-virola);
+            box-shadow: 10px 10px 0px rgba(181, 154, 93, 0.1); text-align: left;
+        }
+        .historia-recuadro h2 { font-size: 2.2rem; color: var(--marron-cuero); margin-bottom: 1.5rem; }
+        .historia-recuadro p { line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem; color: var(--marron-texto); }
+        .firma { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem; color: var(--marron-cuero); margin-top: 2rem; }
+
+        @media (max-width: 768px) {
+            nav { padding: 10px 20px; }
+            .nav-logo span { display: none; }
+            .split-banner { flex-direction: column; height: auto; }
+            .split-video { height: 350px; }
+            .split-text { padding: 2rem; text-align: center; align-items: center; }
+            .section-title { margin-left: 20px; font-size: 1.6rem; }
+            .productos-carrusel { padding: 10px 20px; }
+            .cuidados-seccion { padding: 3rem 20px; }
+            .nosotros-seccion { padding: 3rem 20px; justify-content: center; }
+        }
+
+        footer { background: #2b1d11; color: #8d7d70; text-align: center; padding: 2rem; font-size: 0.75rem; border-top: 2px solid var(--dorado-virola); }
+
+        /* --- BOTONES FLOTANTES CORREGIDOS --- */
+        .ig-float { 
+            position: fixed; bottom: 85px; right: 20px; 
+            background: dimgray;
+            background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            color: white; border-radius: 50%; 
+            width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; 
+            z-index: 9999; text-decoration: none; font-size: 26px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+            transition: 0.3s;
+        }
+        .wa-float { 
+            position: fixed; bottom: 20px; right: 20px; 
+            background: #25d366; color: white; border-radius: 50%; 
+            width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; 
+            z-index: 9999; text-decoration: none; font-size: 28px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+            transition: 0.3s;
+        }
+        .ig-float:hover, .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 15px rgba(0,0,0,0.3); }
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-logo">
+        <img src="logo.jpg" alt="MG El Mate Logo">
+        <span>MG EL MATE</span>
+    </div>
+    <ul>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#cuidados">Cuidados</a></li>
+        <li><a href="#nosotros">Historia</a></li>
+    </ul>
+</nav>
+
+<section class="split-banner">
+    <div class="split-video">
+        <video autoplay muted loop playsinline><source src="video.mp4" type="video/mp4"></video>
+    </div>
+    <div class="split-text">
+        <h2>Encontrá a tu gran compañero.</h2>
+        <p>MG nació de nuestra propia historia. Seleccionamos cada pieza con la misma dedicación con la que compartimos nuestro primer mate.</p>
+        <a href="#productos" class="btn-cta">Explorar Catálogo</a>
+    </div>
+</section>
+
+<div class="categorias-bar">
+    <a href="#imperiales" class="cat-btn">Imperiales</a>
+    <a href="#camioneros" class="cat-btn">Camioneros</a>
+    <a href="#torpedos" class="cat-btn">Torpedos</a>
+    <a href="#accesorios" class="cat-btn">Accesorios</a>
+</div>
+
+<section id="productos" class="productos-container">
+
+    <h2 id="imperiales" class="section-title">Mates Imperiales</h2>
+    <p class="scroll-hint">Deslizá para ver más →</p>
+    <div class="productos-carrusel">
+        <div class="mate-card">
+            <div class="img-container"><img src="imperial1.jpg" alt="Imperial 1"></div>
+            <div class="mate-info"><h3>Imperial con virola artesanal</h3><p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Imperial%20con%20virola%20artesanal" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="imperial2.jpg" alt="Imperial 2"></div>
+            <div class="mate-info"><h3>Imperial River Plate</h3><p style="font-size:0.8rem; color:#666;">Bolitas y escudo de River en bronce.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Imperial%20River%20Plate" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="imperial3.jpg" alt="Imperial 3"></div>
+            <div class="mate-info"><h3>Imperial AFA</h3><p style="font-size:0.8rem; color:#666;">Virola de acero y escudo de la AFA.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Imperial%20AFA" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="imperial4.jpg" alt="Imperial 4"></div>
+            <div class="mate-info"><h3>Imperial Boca Juniors</h3><p style="font-size:0.8rem; color:#666;">Escudo de bronce y grabados del club.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Imperial%20Boca%20Juniors" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="imperial5.jpg" alt="Imperial 5"></div>
+            <div class="mate-info"><h3>Imperial Premium 5</h3><p style="font-size:0.8rem; color:#666;">Calabaza premium seleccionada.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Imperial%20Premium%205" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+    </div>
+
+    <h2 id="camioneros" class="section-title">Mates Camioneros</h2>
+    <p class="scroll-hint">Deslizá para ver más →</p>
+    <div class="productos-carrusel">
+        <div class="mate-card">
+            <div class="img-container"><img src="camionero1.jpg" alt="Camionero 1"></div>
+            <div class="mate-info"><h3>Camionero 1</h3><p style="font-size:0.8rem; color:#666;">Cuero vaqueta legítimo.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Camionero%201" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="camionero2.jpg" alt="Camionero 2"></div>
+            <div class="mate-info"><h3>Camionero 2</h3><p style="font-size:0.8rem; color:#666;">Costuras reforzadas.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Camionero%202" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="camionero3.jpg" alt="Camionero 3"></div>
+            <div class="mate-info"><h3>Camionero 3</h3><p style="font-size:0.8rem; color:#666;">Clásico.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Camionero%203" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="camionero4.jpg" alt="Camionero 4"></div>
+            <div class="mate-info"><h3>Camionero 4</h3><p style="font-size:0.8rem; color:#666;">Artesanal.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Camionero%204" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="camionero5.jpg" alt="Camionero 5"></div>
+            <div class="mate-info"><h3>Camionero 5</h3><p style="font-size:0.8rem; color:#666;">Edición especial.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Camionero%205" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+    </div>
+
+    <h2 id="torpedos" class="section-title">Mates Torpedo</h2>
+    <p class="scroll-hint">Deslizá para ver más →</p>
+    <div class="productos-carrusel">
+        <div class="mate-card">
+            <div class="img-container"><img src="torpedo1.jpg" alt="Torpedo 1"></div>
+            <div class="mate-info"><h3>Torpedo 1</h3><p style="font-size:0.8rem; color:#666;">Estilo uruguayo.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Torpedo%201" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="torpedo2.jpg" alt="Torpedo 2"></div>
+            <div class="mate-info"><h3>Torpedo 2</h3><p style="font-size:0.8rem; color:#666;">Acero inox.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Torpedo%202" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="torpedo3.jpg" alt="Torpedo 3"></div>
+            <div class="mate-info"><h3>Torpedo 3</h3><p style="font-size:0.8rem; color:#666;">Calabaza forrada.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Torpedo%203" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="torpedo4.jpg" alt="Torpedo 4"></div>
+            <div class="mate-info"><h3>Torpedo 4</h3><p style="font-size:0.8rem; color:#666;">Diseño ergonómico.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Torpedo%204" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="torpedo5.jpg" alt="Torpedo 5"></div>
+            <div class="mate-info"><h3>Torpedo 5</h3><p style="font-size:0.8rem; color:#666;">Tradicional.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Torpedo%205" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+    </div>
+
+    <h2 id="accesorios" class="section-title">Accesorios</h2>
+    <p class="scroll-hint">Deslizá para ver más →</p>
+    <div class="productos-carrusel">
+        <div class="mate-card">
+            <div class="img-container"><img src="accesorio1.jpg" alt="Accesorio 1"></div>
+            <div class="mate-info"><h3>Bombilla 1</h3><p style="font-size:0.8rem; color:#666;">Pico de loro.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20la%20Bombilla%201" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="accesorio2.jpg" alt="Accesorio 2"></div>
+            <div class="mate-info"><h3>Accesorio 2</h3><p style="font-size:0.8rem; color:#666;">Calidad premium.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Accesorio%202" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="accesorio3.jpg" alt="Accesorio 3"></div>
+            <div class="mate-info"><h3>Accesorio 3</h3><p style="font-size:0.8rem; color:#666;">Estilo artesanal.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Accesorio%203" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="accesorio4.jpg" alt="Accesorio 4"></div>
+            <div class="mate-info"><h3>Accesorio 4</h3><p style="font-size:0.8rem; color:#666;">Cuero seleccionado.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Accesorio%204" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+        <div class="mate-card">
+            <div class="img-container"><img src="accesorio5.jpg" alt="Accesorio 5"></div>
+            <div class="mate-info"><h3>Accesorio 5</h3><p style="font-size:0.8rem; color:#666;">Edición MG.</p></div>
+            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Accesorio%205" class="btn-whatsapp">WhatsApp</a></div>
+        </div>
+    </div>
+
+</section>
+
+<section id="cuidados" class="cuidados-seccion">
+    <h2 class="section-title" style="margin: 0 auto; text-align: center; width: fit-content;">Cuidado y Curado</h2>
+    <p style="text-align: center; margin-top: 15px; color: var(--dorado-virola); font-style: italic; font-size: 0.9rem;">Pasá por encima de las tarjetas para ver las instrucciones</p>
+    
+    <div class="cuidados-grid">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span>1</span>
+                    <div class="foto-paso">
+                        <p style="font-size: 0.7rem; color: #888; margin: 0; padding: 10px;">[Foto de mate lavándose]</p>
+                    </div>
+                    <h3>Lavado Inicial</h3>
+                </div>
+                <div class="flip-card-back">
+                    <h3>Lavado Inicial</h3>
+                    <p>Enjuagá el interior con agua tibia para retirar el polvo. Cuidá de no mojar el cuero exterior ni la virola en ningún momento.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span>2</span>
+                    <div class="foto-paso">
+                        <p style="font-size: 0.7rem; color: #888; margin: 0; padding: 10px;">[Foto de mate con yerba]</p>
+                    </div>
+                    <h3>El Curado</h3>
+                </div>
+                <div class="flip-card-back">
+                    <h3>El Curado</h3>
+                    <p>Llená el mate con yerba húmeda (ya usada) y agregá un poco de agua tibia. Dejalo reposar así, a temperatura ambiente, durante 24 horas.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span>3</span>
+                    <div class="foto-paso">
+                        <p style="font-size: 0.7rem; color: #888; margin: 0; padding: 10px;">[Foto raspando el mate]</p>
+                    </div>
+                    <h3>Raspado</h3>
+                </div>
+                <div class="flip-card-back">
+                    <h3>Raspado</h3>
+                    <p>Vaciá el mate y, con una cucharita, raspá suavemente las paredes para quitar el hollejo. Repetí todo este proceso 2 a 3 veces antes de usarlo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="nosotros" class="nosotros-seccion">
+    <div class="historia-recuadro">
+        <h2>Detrás de MG El Mate</h2>
+        <p>MG no es solo una marca; es el reflejo de nuestra propia historia. Lo que empezó como una charla entre mates con Melody, se transformó en el deseo de compartir con otros esa misma conexión única que genera este ritual.</p>
+        <p>Cada inicial de nuestro nombre forma <strong>MG</strong>, y cada producto que seleccionamos pasa por nuestras manos con un solo objetivo: que encuentres en él a ese compañero fiel para tus mañanas y momentos compartidos.</p>
+        <p>Desde Moreno, elegimos las mejores calabazas y el cuero más resistente, porque sabemos que un buen mate es una inversión para toda la vida.</p>
+        <div class="firma">Gustavo & Melody</div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 MG EL MATE - Moreno, Buenos Aires.</p>
+</footer>
+
+<a href="https://www.instagram.com/mg_elmate/" class="ig-float" target="_blank">
+    <svg viewBox="0 0 448 512" width="24" height="24" fill="white" style="display:block;">
+        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.8 9.9 67.6 36.1 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+    </svg>
+</a>
+<a href="https://wa.me/5491138613404?text=Hola%20Gustavo%20y%20Melody!%20Vi%20la%20web%20y%20quer%C3%ADa%20hacerles%20una%20consulta." class="wa-float" target="_blank">✆</a>
+
+</body>
+</html>
