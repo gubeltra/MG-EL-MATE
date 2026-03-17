@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>MG El Mate | Tradición y Calidad en Moreno</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.png" type="image/png">
 
+    <meta name="description" content="MG El Mate: Mates imperiales, camioneros, torpedos y accesorios de calidad premium. Seleccionamos cada pieza artesanal para tu ritual diario desde Moreno, Buenos Aires.">
+    <meta name="keywords" content="mates, mate imperial, mate camionero, mate torpedo, comprar mates, mates de cuero, bombillas, mates Moreno, MG el mate">
+    <meta name="author" content="Gustavo y Melody">
+
+    <meta property="og:title" content="MG El Mate | Calidad Premium">
+    <meta property="og:description" content="Encontrá a tu gran compañero. Mates seleccionados con la misma dedicación con la que compartimos nuestro primer mate.">
+    <meta property="og:image" content="logo.jpg"> <meta property="og:url" content="https://gubeltra.github.io/mg-el-mate/"> <meta property="og:type" content="website">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+       
     <style>
         /* --- VARIABLES DE MARCA --- */
         :root {
@@ -78,6 +89,11 @@
         .precio { font-weight: bold; font-size: 1.3rem; color: var(--marron-cuero); display: block; margin-bottom: 12px; }
         .btn-whatsapp { background: #25d366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; font-size: 0.85rem; transition: 0.3s; }
 
+.botones-accion { display: flex; gap: 10px; justify-content: center; width: 100%; margin-top: 10px; }
+        .btn-mercadopago { background: #009EE3; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: 0.3s; flex: 1; text-align: center; }
+        .btn-mercadopago:hover { background: #007eb5; }
+        .btn-whatsapp { flex: 1; text-align: center; display: flex; align-items: center; justify-content: center; } /* Actualizamos el tuyo para que queden del mismo tamaño */
+
         .scroll-hint { text-align: right; font-size: 0.75rem; color: var(--dorado-virola); margin-right: 50px; margin-top: -15px; margin-bottom: 20px; font-style: italic; opacity: 0.8; }
 
        /* --- SECCIÓN CUIDADOS INTERACTIVA (FLIP CARDS) --- */
@@ -104,34 +120,31 @@
         .flip-card-back p { font-size: 1.05rem; line-height: 1.6; font-weight: 500; color: var(--crema-fondo); }
         
         /* --- NUESTRA HISTORIA --- */
-        .nosotros-seccion {
-            padding: 5rem 50px; background-color: var(--crema-oscuro);
-            display: flex; justify-content: flex-end;
-        }
-        .historia-recuadro {
-            max-width: 500px; background-color: var(--crema-fondo); padding: 3rem;
-            border-radius: 15px; border: 1px solid var(--dorado-virola);
-            box-shadow: 10px 10px 0px rgba(181, 154, 93, 0.1); text-align: left;
-        }
+           
+        footer { background: #2b1d11; color: #8d7d70; text-align: center; padding: 2rem; font-size: 0.75rem; border-top: 2px solid var(--dorado-virola); }
+
+      /* --- SECCIÓN HISTORIA Y FAQ (LADO A LADO) --- */
+        .historia-faq-seccion { padding: 5rem 50px; background-color: var(--crema-oscuro); display: flex; gap: 50px; align-items: flex-start; justify-content: space-between; }
+        .historia-recuadro { flex: 1; background-color: var(--crema-fondo); padding: 3rem; border-radius: 15px; border: 1px solid var(--dorado-virola); box-shadow: 10px 10px 0px rgba(181, 154, 93, 0.1); text-align: left; }
         .historia-recuadro h2 { font-size: 2.2rem; color: var(--marron-cuero); margin-bottom: 1.5rem; }
         .historia-recuadro p { line-height: 1.7; font-size: 0.95rem; margin-bottom: 1rem; color: var(--marron-texto); }
         .firma { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem; color: var(--marron-cuero); margin-top: 2rem; }
+        
+        /* FAQ */
+        .faq-container { flex: 1; width: 100%; }
+        details.faq-item { background: var(--crema-fondo); border: 1px solid var(--dorado-virola); border-radius: 8px; margin-bottom: 15px; overflow: hidden; transition: 0.3s; }
+        details.faq-item:hover { box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        summary.faq-pregunta { padding: 20px; font-weight: bold; color: var(--marron-cuero); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; }
+        summary.faq-pregunta::-webkit-details-marker { display: none; }
+        summary.faq-pregunta::after { content: '+'; font-size: 1.5rem; color: var(--verde-suculenta); font-weight: normal; }
+        details.faq-item[open] summary.faq-pregunta::after { content: '−'; color: var(--marron-cuero); }
+        .faq-respuesta { padding: 0 20px 20px 20px; color: var(--marron-texto); line-height: 1.6; border-top: 1px solid var(--crema-oscuro); margin-top: 10px; padding-top: 15px; }
 
-        @media (max-width: 768px) {
-            nav { padding: 10px 20px; }
-            .nav-logo span { display: none; }
-            .split-banner { flex-direction: column; height: auto; }
-            .split-video { height: 350px; }
-            .split-text { padding: 2rem; text-align: center; align-items: center; }
-            .section-title { margin-left: 20px; font-size: 1.6rem; }
-            .productos-carrusel { padding: 10px 20px; }
-            .cuidados-seccion { padding: 3rem 20px; }
-            .nosotros-seccion { padding: 3rem 20px; justify-content: center; }
+        @media (max-width: 900px) {
+            .historia-faq-seccion { flex-direction: column; padding: 3rem 20px; }
+            .botones-accion { flex-direction: column; } /* En celular los botones de compra se apilan */
         }
-
-        footer { background: #2b1d11; color: #8d7d70; text-align: center; padding: 2rem; font-size: 0.75rem; border-top: 2px solid var(--dorado-virola); }
-
-        /* --- BOTONES FLOTANTES CORREGIDOS --- */
+                /* --- BOTONES FLOTANTES CORREGIDOS --- */
         .ig-float { 
             position: fixed; bottom: 85px; right: 20px; 
             background: dimgray;
@@ -190,122 +203,301 @@
     <h2 id="imperiales" class="section-title">Mates Imperiales</h2>
     <p class="scroll-hint">Deslizá para ver más →</p>
     <div class="productos-carrusel">
-        <div class="mate-card">
-            <div class="img-container"><img src="imperial1.jpg" alt="Imperial 1"></div>
-            <div class="mate-info"><h3>Imperial con virola artesanal</h3><p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Imperial%20con%20virola%20artesanal" class="btn-whatsapp">WhatsApp</a></div>
+       <div class="mate-card">
+            <div class="img-container"><img src="imperial1.jpg" alt="imperial 1"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+           </div>
         </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="imperial2.jpg" alt="Imperial 2"></div>
-            <div class="mate-info"><h3>Imperial River Plate</h3><p style="font-size:0.8rem; color:#666;">Bolitas y escudo de River en bronce.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Imperial%20River%20Plate" class="btn-whatsapp">WhatsApp</a></div>
+         <div class="mate-card">
+            <div class="img-container"><img src="imperial2.jpg" alt="imperial 2"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
         </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="imperial3.jpg" alt="Imperial 3"></div>
-            <div class="mate-info"><h3>Imperial AFA</h3><p style="font-size:0.8rem; color:#666;">Virola de acero y escudo de la AFA.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Imperial%20AFA" class="btn-whatsapp">WhatsApp</a></div>
+               <div class="mate-card">
+            <div class="img-container"><img src="imperial3.jpg" alt="imperial 3"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
+        </div>   
+           <div class="mate-card">
+            <div class="img-container"><img src="imperial4.jpg" alt="imperial 4"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
         </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="imperial4.jpg" alt="Imperial 4"></div>
-            <div class="mate-info"><h3>Imperial Boca Juniors</h3><p style="font-size:0.8rem; color:#666;">Escudo de bronce y grabados del club.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Imperial%20Boca%20Juniors" class="btn-whatsapp">WhatsApp</a></div>
-        </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="imperial5.jpg" alt="Imperial 5"></div>
-            <div class="mate-info"><h3>Imperial Premium 5</h3><p style="font-size:0.8rem; color:#666;">Calabaza premium seleccionada.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Imperial%20Premium%205" class="btn-whatsapp">WhatsApp</a></div>
-        </div>
-    </div>
-
-    <h2 id="camioneros" class="section-title">Mates Camioneros</h2>
+               <div class="mate-card">
+            <div class="img-container"><img src="imperial5.jpg" alt="imperial 5"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
+        </div>   
+        </div>  
+         <h2 id="camioneros" class="section-title">Mates Camioneros</h2>
     <p class="scroll-hint">Deslizá para ver más →</p>
     <div class="productos-carrusel">
-        <div class="mate-card">
-            <div class="img-container"><img src="camionero1.jpg" alt="Camionero 1"></div>
-            <div class="mate-info"><h3>Camionero 1</h3><p style="font-size:0.8rem; color:#666;">Cuero vaqueta legítimo.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Camionero%201" class="btn-whatsapp">WhatsApp</a></div>
+       <div class="mate-card">
+            <div class="img-container"><img src="camionero1.jpg" alt="camionero 1"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
         </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="camionero2.jpg" alt="Camionero 2"></div>
-            <div class="mate-info"><h3>Camionero 2</h3><p style="font-size:0.8rem; color:#666;">Costuras reforzadas.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Camionero%202" class="btn-whatsapp">WhatsApp</a></div>
+               <div class="mate-card">
+            <div class="img-container"><img src="camionero 2.jpg" alt="camionero 2"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
         </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="camionero3.jpg" alt="Camionero 3"></div>
-            <div class="mate-info"><h3>Camionero 3</h3><p style="font-size:0.8rem; color:#666;">Clásico.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Camionero%203" class="btn-whatsapp">WhatsApp</a></div>
+              <div class="mate-card">
+            <div class="img-container"><img src="camionero 3.jpg" alt="camionero 3"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
         </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="camionero4.jpg" alt="Camionero 4"></div>
-            <div class="mate-info"><h3>Camionero 4</h3><p style="font-size:0.8rem; color:#666;">Artesanal.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Camionero%204" class="btn-whatsapp">WhatsApp</a></div>
-        </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="camionero5.jpg" alt="Camionero 5"></div>
-            <div class="mate-info"><h3>Camionero 5</h3><p style="font-size:0.8rem; color:#666;">Edición especial.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Camionero%205" class="btn-whatsapp">WhatsApp</a></div>
-        </div>
-    </div>
+               <div class="mate-card">
+            <div class="img-container"><img src="camionero 4.jpg" alt="camionero 4"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
+            </div>
+      <div class="mate-card">
+            <div class="img-container"><img src="camionero 5.jpg" alt="camionero 5"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
+        </div> 
+           </div>
 
     <h2 id="torpedos" class="section-title">Mates Torpedo</h2>
     <p class="scroll-hint">Deslizá para ver más →</p>
     <div class="productos-carrusel">
         <div class="mate-card">
-            <div class="img-container"><img src="torpedo1.jpg" alt="Torpedo 1"></div>
-            <div class="mate-info"><h3>Torpedo 1</h3><p style="font-size:0.8rem; color:#666;">Estilo uruguayo.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Torpedo%201" class="btn-whatsapp">WhatsApp</a></div>
+            <div class="img-container"><img src="torpedo 1.jpg" alt="torpedo 1"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
         </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="torpedo2.jpg" alt="Torpedo 2"></div>
-            <div class="mate-info"><h3>Torpedo 2</h3><p style="font-size:0.8rem; color:#666;">Acero inox.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Torpedo%202" class="btn-whatsapp">WhatsApp</a></div>
+                <div class="mate-card">
+            <div class="img-container"><img src="torpedo 2.jpg" alt="Torpedo 2"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
         </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="torpedo3.jpg" alt="Torpedo 3"></div>
-            <div class="mate-info"><h3>Torpedo 3</h3><p style="font-size:0.8rem; color:#666;">Calabaza forrada.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Torpedo%203" class="btn-whatsapp">WhatsApp</a></div>
+               <div class="mate-card">
+            <div class="img-container"><img src="torpedo 3.jpg" alt="torpedo 3"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
         </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="torpedo4.jpg" alt="Torpedo 4"></div>
-            <div class="mate-info"><h3>Torpedo 4</h3><p style="font-size:0.8rem; color:#666;">Diseño ergonómico.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Torpedo%204" class="btn-whatsapp">WhatsApp</a></div>
+                <div class="mate-card">
+            <div class="img-container"><img src="torpedo 4.jpg" alt="torpedo 4"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
         </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="torpedo5.jpg" alt="Torpedo 5"></div>
-            <div class="mate-info"><h3>Torpedo 5</h3><p style="font-size:0.8rem; color:#666;">Tradicional.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Mate%20Torpedo%205" class="btn-whatsapp">WhatsApp</a></div>
+              <div class="mate-card">
+            <div class="img-container"><img src="torpedo 5.jpg" alt="torpedo 5"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
         </div>
-    </div>
+            </div>
 
     <h2 id="accesorios" class="section-title">Accesorios</h2>
     <p class="scroll-hint">Deslizá para ver más →</p>
     <div class="productos-carrusel">
-        <div class="mate-card">
-            <div class="img-container"><img src="accesorio1.jpg" alt="Accesorio 1"></div>
-            <div class="mate-info"><h3>Bombilla 1</h3><p style="font-size:0.8rem; color:#666;">Pico de loro.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20la%20Bombilla%201" class="btn-whatsapp">WhatsApp</a></div>
+       <div class="mate-card">
+            <div class="img-container"><img src="accesorios 1.jpg" alt="accesorios 1"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
         </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="accesorio2.jpg" alt="Accesorio 2"></div>
-            <div class="mate-info"><h3>Accesorio 2</h3><p style="font-size:0.8rem; color:#666;">Calidad premium.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Accesorio%202" class="btn-whatsapp">WhatsApp</a></div>
+                <<div class="mate-card">
+            <div class="img-container"><img src="accesorios 2.jpg" alt="accesorios 2"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
+        </div><div class="mate-card">
+            <div class="img-container"><img src="accesorios 3.jpg" alt="accesorios 3"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
         </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="accesorio3.jpg" alt="Accesorio 3"></div>
-            <div class="mate-info"><h3>Accesorio 3</h3><p style="font-size:0.8rem; color:#666;">Estilo artesanal.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Accesorio%203" class="btn-whatsapp">WhatsApp</a></div>
+            <div class="mate-card">
+            <div class="img-container"><img src="accesorios 4.jpg" alt="accesorios 4"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
         </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="accesorio4.jpg" alt="Accesorio 4"></div>
-            <div class="mate-info"><h3>Accesorio 4</h3><p style="font-size:0.8rem; color:#666;">Cuero seleccionado.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Accesorio%204" class="btn-whatsapp">WhatsApp</a></div>
+            
+           <div class="mate-card">
+            <div class="img-container"><img src="accesorios 5.jpg" alt="accesorios 5"></div>
+            <div class="mate-info">
+                <h3>Imperial con virola artesanal</h3>
+                <p style="font-size:0.8rem; color:#666;">Mate de cuero repujado con cincelado artesanal.</p>
+            </div>
+            <div class="mate-action">
+                <span class="precio">$35.000</span>
+                <div class="botones-accion">
+                    <a href="TU_LINK_DE_MERCADO_PAGO" class="btn-mercadopago" target="_blank">Comprar</a>
+                    <a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Imperial%20artesanal" class="btn-whatsapp" target="_blank">Consultar</a>
+                </div>
+            </div>
         </div>
-        <div class="mate-card">
-            <div class="img-container"><img src="accesorio5.jpg" alt="Accesorio 5"></div>
-            <div class="mate-info"><h3>Accesorio 5</h3><p style="font-size:0.8rem; color:#666;">Edición MG.</p></div>
-            <div class="mate-action"><span class="precio">Consultar</span><a href="https://wa.me/5491138613404?text=Hola%20MG!%20Me%20interesa%20el%20Accesorio%205" class="btn-whatsapp">WhatsApp</a></div>
-        </div>
-    </div>
+            </div>
 
 </section>
 
@@ -363,7 +555,10 @@
         </div>
     </div>
 </section>
-<section id="nosotros" class="nosotros-seccion">
+
+
+<section id="nosotros-faq" class="historia-faq-seccion">
+    
     <div class="historia-recuadro">
         <h2>Detrás de MG El Mate</h2>
         <p>MG no es solo una marca; es el reflejo de nuestra propia historia. Lo que empezó como una charla entre mates con Melody, se transformó en el deseo de compartir con otros esa misma conexión única que genera este ritual.</p>
@@ -371,8 +566,32 @@
         <p>Desde Moreno, elegimos las mejores calabazas y el cuero más resistente, porque sabemos que un buen mate es una inversión para toda la vida.</p>
         <div class="firma">Gustavo & Melody</div>
     </div>
-</section>
 
+    <div class="faq-container">
+        <h2 class="section-title" style="margin: 0 0 30px 0; width: fit-content;">Preguntas Frecuentes</h2>
+        
+        <details class="faq-item">
+            <summary class="faq-pregunta">¿Hacen envíos a todo el país?</summary>
+            <div class="faq-respuesta">Sí, enviamos a toda la Argentina. Si estás en Moreno o zonas cercanas, podemos coordinar la entrega directamente. Para el resto del país enviamos por correo.</div>
+        </details>
+
+        <details class="faq-item">
+            <summary class="faq-pregunta">¿Qué medios de pago aceptan?</summary>
+            <div class="faq-respuesta">Podés abonar directamente desde la web con Mercado Pago. También aceptamos transferencias o efectivo si coordinamos entrega en persona. ¡Consultanos por WhatsApp!</div>
+        </details>
+
+        <details class="faq-item">
+            <summary class="faq-pregunta">¿Los mates ya vienen curados?</summary>
+            <div class="faq-respuesta">No, los enviamos listos para que vos mismo hagas el proceso. En nuestra sección de "Cuidados" te explicamos paso a paso cómo dejar tu mate a punto.</div>
+        </details>
+
+        <details class="faq-item">
+            <summary class="faq-pregunta">¿Tienen venta para regalos empresariales?</summary>
+            <div class="faq-respuesta">¡Sí! Armamos pedidos a medida para compras en cantidad. Mandanos un mensaje y lo charlamos para que quede perfecto.</div>
+        </details>
+    </div>
+
+</section>
 <footer>
     <p>&copy; 2026 MG EL MATE - Moreno, Buenos Aires.</p>
 </footer>
@@ -386,3 +605,4 @@
 
 </body>
 </html>
+
